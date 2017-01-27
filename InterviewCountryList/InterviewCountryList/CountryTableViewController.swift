@@ -64,10 +64,16 @@ class CountryTableViewController: UITableViewController {
                     do {
                         
                         if let responseString = try! JSONSerialization.jsonObject(with: urlContent, options: .allowFragments) as? [Any]{
+                            
+                        //Denne fungerer ikke: 
+                            
+//                      if let responseString = try! JSONSerialization.jsonObject(with: urlContent,                                           options: .allowFragments) as? [String: Any]{
+                            
+                        // Prøver jeg å gjøre noe slik, så fungerer det heller ikke:
+//                         if let name = responseString["name"] as? String{ print(name)}
                             print(responseString)
                         }
-                        //this part works fine
-                        //
+
                     } catch {
                         
                         print("JSON Processing Failed")
@@ -80,16 +86,6 @@ class CountryTableViewController: UITableViewController {
         task.resume()
         
     }
-//    func parse(json: JSON) {
-//        for result in json["results"].arrayValue {
-//            let title = result["title"].stringValue
-//            let body = result["body"].stringValue
-//            let sigs = result["signatureCount"].stringValue
-//            let obj = ["title": title, "body": body, "sigs": sigs]
-//            petitions.append(obj)
-//        }
-//        tableView.reloadData()
-//    }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
